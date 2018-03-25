@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Go за Прикладом: Розгалуження Умови - Перемикач (Switch)</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script type="text/javascript">
+    if (window.location.host == "gobyexample.com") {}
+  </script>
+  <body>
+    <div class="example" id="switch">
+      <h2><a href="./">Go за Прикладом</a>: Розгалуження Умови - Перемикач (Switch)</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Твердежння <code>switch</code> виражають умовності на кілька гілок.</p>
+
+          </td>
+          <td class="code empty leading">
+	        
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        <a href="http://play.golang.org/p/_CmN0iYvmDj"><img title="Run code" src="play.png" class="run" /></a>
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span> <span class="s">&quot;time&quot;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Ось базовий <code>switch</code>.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="nx">i</span> <span class="o">:=</span> <span class="mi">2</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Напиши &quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="s">&quot; як &quot;</span><span class="p">)</span>
+    <span class="k">switch</span> <span class="nx">i</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;один&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;два&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;три&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Ви можете використовувати коми - задля розподілу
+кількох умов в одній гілці твердженням <code>case</code>.
+Ми також використовуємо <code>default</code> (необов’язкове твердження),
+для розгалуження умови, що відображатиме стандартно-задану дію.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="k">switch</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Weekday</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Saturday</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Sunday</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Це вихідні&quot;</span><span class="p">)</span>
+    <span class="k">default</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Це робочий день&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><code>switch</code> без виразу - являє собою альтернативний спосіб
+виразити <code>if/else</code> логіку. Приклад також демонструє,
+що гілки <code>case</code> можуть містити не тільки константи.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+    <span class="k">switch</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Hour</span><span class="p">()</span> <span class="p">&lt;</span> <span class="mi">12</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Над полудень&quot;</span><span class="p">)</span>
+    <span class="k">default</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;По полудні&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Тип <code>switch</code> що порівнює типи замість значень. Ви можете
+використати це для визначення типу значення інтерфейса.
+В цьому прикладі <code>switch</code> видасть повідомлення базуючись на
+значенні типу змінної <code>t</code> якщо йому про це буде відомо.</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre>    <span class="nx">whatAmI</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">i</span> <span class="kd">interface</span><span class="p">{})</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="nx">t</span> <span class="o">:=</span> <span class="nx">i</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="kt">bool</span><span class="p">:</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Я логічна змінна&quot;</span><span class="p">)</span>
+        <span class="k">case</span> <span class="kt">int</span><span class="p">:</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Я ціле число&quot;</span><span class="p">)</span>
+        <span class="k">default</span><span class="p">:</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Незнаю нічого про тип %T\n&quot;</span><span class="p">,</span> <span class="nx">t</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nx">whatAmI</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+    <span class="nx">whatAmI</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nx">whatAmI</span><span class="p">(</span><span class="s">&quot;Гей!&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> go run switch.go
+<span class="go">Напиши 2 як два</span>
+<span class="go">Це робочий день</span>
+<span class="go">Над полудень</span>
+<span class="go">Я логічна змінна</span>
+<span class="go">Я ціле число</span>
+<span class="go">Незнаю нічого про тип string</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Наступний приклад: <a href="arrays">Масиви (Arrays)</a>.
+      </p>
+      
+	  <p class="footer">
+        Автор <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | Переклад <a href="https://twitter.com/butuzov">@butuzov</a> | <a href="mailto:butuzov@made.ua">відгуки</a> | <a href="https://github.com/butuzov/gobyexample/blob/ukrainian/examples/switch">source</a> | <a href="https://github.com/butuzov/gobyexample#license">ліцензія</a>
+      </p>
+    </div>
+  </body>
+</html>
